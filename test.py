@@ -12,18 +12,9 @@ from data.datasets import get_trainloader, get_testloader, get_loader
 from utils.utils import create_dir
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--steps', type=int, default=500000)
+
 parser.add_argument('--device', type=str, default='cuda:0')
 parser.add_argument('--task_order', type=str, nargs='+', required=False, default=['haze', 'rain', 'snow'])
-parser.add_argument('--resume', type=int, required=False, default=0)
-parser.add_argument('--eval_step', type=int, default=20000)
-parser.add_argument('--lr', default=0.0001, type=float, help='')
-parser.add_argument('--alpha', default=1, type=float, help='')
-parser.add_argument('--beta1', default=0.2, type=float, help='')
-parser.add_argument('--beta2', default=0.8, type=float, help='')
-parser.add_argument('--lamb', default=0.3, type=float, help='')  # 0.3
-parser.add_argument('--lamb1', default=0.3, type=float, help='')
-parser.add_argument("--distill_temp", type=float, default=0.1)  # 2
 parser.add_argument('--data_path', type=str, default='C:\\dataset', help='data path')
 parser.add_argument('--logger_path', type=str, default='./Log', help='save train logger path')
 parser.add_argument('--save_model_dir', type=str, default='./checkpoints/', help='save train model dir.pk')
@@ -37,7 +28,6 @@ parser.add_argument('--contrastloss', type=str, default=True, help='Contrastive 
 parser.add_argument('--projector', type=str, default=True, help='Projector Loss')
 parser.add_argument('--no_lr_sche', type=str, default=False, help='no lr cos schedule')
 parser.add_argument('--exp_name', type=str, default='haze_rain_snow', help='no lr cos schedule')
-parser.add_argument('--memory_size', type=int, default=500, help='memory size')
 parser.add_argument('--h_channels', type=int, default=16)
 args = parser.parse_args()
 args.logger_path = os.path.join(args.logger_path, args.exp_name)
