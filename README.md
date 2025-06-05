@@ -37,7 +37,7 @@ $datasets/
             |–– synthetic
             |–– gt
 ```
-First, run `python patch.py` to patch Rain100H.
+
 
 
 ## Usage
