@@ -43,7 +43,7 @@ First, run `python patch.py` to patch Rain100H.
 ## Usage
 If you want to test the results mentioned in our paper, run
 ```
-python main.py --task_order haze rain snow --exp_name haze_rain_snow  --device cuda:0
+python test.py --task_order haze rain snow --exp_name haze_rain_snow  --device cuda:0
 
 ```
 
