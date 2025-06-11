@@ -6,7 +6,6 @@ import torch.nn as nn
 
 from cl_all_in_one import CLAIO
 from models.FFA import FFA
-from models.ContrastLoss import LossNetwork as ContrastLoss
 from data.exemplar import Exemplar_Dataset
 from data.datasets import get_trainloader, get_testloader, get_loader
 from utils.utils import create_dir
@@ -43,11 +42,9 @@ if __name__ == '__main__':
     testloader = get_testloader(args)
     # loader = get_loader(args)
 
-    criterion = []
-    criterion.append(nn.L1Loss().to(device))
-    criterion.append(ContrastLoss(device).to(device))
 
-    model = CLAIO(net, criterion, trainloader, testloader, device, trainLogger, args)
+
+    model = CLAIO(net,  trainloader, testloader, device, trainLogger, args)
 
     task_id=len(args.task_order)-1
 
