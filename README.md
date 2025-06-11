@@ -7,7 +7,7 @@
 ```pip install -r requirements.txt```
 
 ## Experimental Setup
-Our code requires three datasets: OTS, Rain100H, Snow100K
+Our code requires three training datasets: OTS, Rain100H, Snow100K. Additionally, the test set used in our experiments is:SOTS-outdoor, Rain100H, Snow100K-M.
 ### Dataset
 We recommend putting all datasets under the same folder (say $datasets) to ease management and following the instructions below to organize datasets to avoid modifying the source code. The file structure should look like:
 
