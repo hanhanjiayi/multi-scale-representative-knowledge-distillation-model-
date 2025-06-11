@@ -12,7 +12,7 @@ from utils.metrics import psnr, ssim, rmse
 
 
 class CLAIO():
-    def __init__(self, net: FFA, criterion, trainloader, testloader, device, trainLogger, args) -> None:
+    def __init__(self, net: FFA, trainloader, testloader, device, trainLogger, args) -> None:
         self.net = net
         self.criterion = criterion
         self.trainloader = trainloader
