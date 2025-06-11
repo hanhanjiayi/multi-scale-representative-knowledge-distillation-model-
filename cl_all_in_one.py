@@ -6,7 +6,7 @@ import time
 import os
 from PIL import Image
 from utils.metrics import psnr, ssim, rmse
-from utils.utils import create_dir
+
 
 
 
@@ -17,7 +17,6 @@ class CLAIO():
         self.criterion = criterion
         self.trainloader = trainloader
         self.testloader = testloader
-        #self.loader=loader
         self.trainLogger = trainLogger
         
         self.autoencoder = Auencoder(args)
