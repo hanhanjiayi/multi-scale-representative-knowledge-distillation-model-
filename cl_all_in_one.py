@@ -1,17 +1,13 @@
 import torch
 from torch import optim
 from torch.utils.data import DataLoader
-from copy import deepcopy
 import numpy as np
 import time
 import os
 from PIL import Image
-from models.FFA import FFA
-from models.Autoencoder import Auencoder
-from data.exemplar import Exemplar_Dataset
 from utils.metrics import psnr, ssim, rmse
 from utils.utils import create_dir
-from utils.lr_schedule import lr_schedule_cosdecay
+
 
 
 
@@ -34,11 +30,11 @@ class CLAIO():
     def test(self, task_id):
         self.net.load_state_dict(torch.load(
             os.path.join(self.args.save_model_dir, self.args.exp_name, self.args.task_order[task_id],
-                         'net_step500000.pth'),
+                         'ours_snow_net_step500000.pth'),
             map_location=self.device))
         self.old_net.load_state_dict(torch.load(
             os.path.join(self.args.save_model_dir, self.args.exp_name, self.args.task_order[task_id-1],
-                         'net_step500000.pth'),
+                         'ours_rain_net_step500000.pth'),
             map_location=self.device))
 
         self.net.eval()
@@ -100,8 +96,7 @@ class CLAIO():
         ssim_test = np.mean(ssim_eval)
         psnr_test = np.mean(psnr_eval)
         rmse_test = np.mean(rmse_eval)
-        del ssims, psnrs, rmses, ssim1, ssim2, psnr1, psnr2, rmse1, rmse2, ssim0, psnr0, rmse0, ori_ssims, ori_psnrs, ori_rmses, ssims_stable, psnrs_stable, rmses_stable, ssim_eval, psnr_eval, rmse_eval, pred, pred1
-        torch.cuda.empty_cache()
+        
 
         return ssim_test, psnr_test, rmse_test
 
