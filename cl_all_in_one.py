@@ -2,9 +2,11 @@ import torch
 from torch import optim
 from torch.utils.data import DataLoader
 import numpy as np
+from copy import deepcopy
 import time
 import os
 from PIL import Image
+from models.FFA import FFA
 from utils.metrics import psnr, ssim, rmse
 
 
@@ -14,15 +16,13 @@ from utils.metrics import psnr, ssim, rmse
 class CLAIO():
     def __init__(self, net: FFA, trainloader, testloader, device, trainLogger, args) -> None:
         self.net = net
-        self.criterion = criterion
         self.trainloader = trainloader
         self.testloader = testloader
         self.trainLogger = trainLogger
-        
-        self.autoencoder = Auencoder(args)
+       
         self.device = device
         self.args = args
-        self.old_net = None
+        self.old_net = deepcopy(self.net)
 
 
     @torch.no_grad()
