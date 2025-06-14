@@ -6,15 +6,14 @@ import torch.nn as nn
 
 from cl_all_in_one import CLAIO
 from models.FFA import FFA
-from data.exemplar import Exemplar_Dataset
-from data.datasets import get_trainloader, get_testloader, get_loader
+from data.datasets import get_trainloader, get_testloader
 from utils.utils import create_dir
 
 parser = argparse.ArgumentParser()
 
 parser.add_argument('--device', type=str, default='cuda:0')
 parser.add_argument('--task_order', type=str, nargs='+', required=False, default=['haze', 'rain', 'snow'])
-parser.add_argument('--data_path', type=str, default='C:\\dataset', help='data path')
+parser.add_argument('--data_path', type=str, default='/home/gyl/hjy/dataset', help='data path')
 parser.add_argument('--logger_path', type=str, default='./Log', help='save train logger path')
 parser.add_argument('--save_model_dir', type=str, default='./checkpoints/', help='save train model dir.pk')
 parser.add_argument('--net', type=str, default='ffa')
@@ -40,7 +39,6 @@ if __name__ == '__main__':
 
     trainloader = get_trainloader(args)
     testloader = get_testloader(args)
-    # loader = get_loader(args)
 
 
 
