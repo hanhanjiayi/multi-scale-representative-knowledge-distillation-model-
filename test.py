@@ -13,7 +13,7 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument('--device', type=str, default='cuda:0')
 parser.add_argument('--task_order', type=str, nargs='+', required=False, default=['haze', 'rain', 'snow'])
-parser.add_argument('--data_path', type=str, default='/home/gyl/hjy/dataset', help='data path')
+parser.add_argument('--data_path', type=str, default='C:\\dataset', help='data path')
 parser.add_argument('--logger_path', type=str, default='./Log', help='save train logger path')
 parser.add_argument('--save_model_dir', type=str, default='./checkpoints/', help='save train model dir.pk')
 parser.add_argument('--net', type=str, default='ffa')
